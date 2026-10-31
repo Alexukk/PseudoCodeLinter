@@ -1,0 +1,35 @@
+{
+  "name": "vscode-psdc",
+  "displayName": "Pseudocode (.psdc)",
+  "description": "Clean, zero-error syntax highlighting for pseudocode.",
+  "version": "0.1.0",
+  "publisher": "your-name",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "pseudocode",
+        "aliases": [
+          "Pseudocode",
+          "psdc"
+        ],
+        "extensions": [
+          ".psdc"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pseudocode",
+        "scopeName": "source.psdc",
+        "path": "./syntaxes/pseudocode.tmLanguage.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "comments": {
+    "lineComment": "//",
+    "blockComment": ["/*", "*/"]
+  },
+  "brackets": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"]
+  ],
+  "autoClosingPairs": [
+    { "open": "{", "close": "}" },
+    { "open": "[", "close": "]" },
+    { "open": "(", "close": ")" },
+    { "open": "\"", "close": "\"", "notIn": ["string", "comment"] },
+    { "open": "'", "close": "'", "notIn": ["string", "comment"] },
+    { "open": "`", "close": "`", "notIn": ["string", "comment"] }
+  ],
+  "surroundingPairs": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"],
+    ["\"", "\""],
+    ["'", "'"],
+    ["`", "`"],
+    ["<", ">"]
+  ],
+  "indentationRules": {
+    "increaseIndentPattern": {
+      "pattern": "^.*(:|\\{|\\b(do|then|else|elseif|elif|try|catch|finally|case|match|repeat|loop|begin)\\b)\\s*$",
+      "flags": "i"
+    },
+    "decreaseIndentPattern": {
+      "pattern": "^\\s*(\\}|\\b(else|elseif|elif|end\\w*|fi|done|esac|catch|finally|until|next|wend)\\b)",
+      "flags": "i"
+    }
+  }
+}
