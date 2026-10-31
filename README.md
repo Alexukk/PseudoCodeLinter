@@ -49,65 +49,78 @@ PRINT("Max is: " + findMax([3, 9, 4]))
 
 ## Installation
 
-### Option 1: From a release (recommended)
+The extension is installed straight from this repository. No build tools and no accounts are needed.
 
-1. Go to the [**Releases**](https://github.com/Alexukk/PseudoCodeLinter/releases) page and download the latest `vscode-psdc-x.y.z.vsix` file.
-2. Install it in one of two ways:
+### 1. Download
 
-   **From the VS Code interface**
-   1. Open VS Code and go to the **Extensions** view (`Ctrl+Shift+X`).
-   2. Click the **`···`** menu in the top right corner of the Extensions panel.
-   3. Choose **Install from VSIX...** and select the downloaded file.
+Pick one:
 
-   **From the terminal**
-   ```bash
-   code --install-extension vscode-psdc-0.1.0.vsix
-   ```
-3. Reload VS Code if it asks you to.
-4. Create or open any file with the `.psdc` extension. Highlighting turns on automatically.
+- **Download ZIP:** open the [Releases](https://github.com/Alexukk/PseudoCodeLinter/releases) page, choose the latest release and download **Source code (zip)**. Then unzip it.
+- **Or clone with Git:**
+  ```bash
+  git clone https://github.com/Alexukk/PseudoCodeLinter.git
+  ```
 
-### Option 2: Build it yourself
+You should end up with a folder that contains `package.json`, `language-configuration.json` and a `syntaxes` folder directly inside it.
 
-You need [Node.js](https://nodejs.org/) installed.
+### 2. Copy the folder into VS Code's extensions directory
 
-```bash
-git clone https://github.com/Alexukk/PseudoCodeLinter.git
-cd PseudoCodeLinter
-npx @vscode/vsce package
-code --install-extension vscode-psdc-0.1.0.vsix
+Copy that folder into the extensions directory and rename it to **`alexukk.vscode-psdc-0.1.0`**.
+
+| System | Extensions directory |
+|---|---|
+| Windows | `%USERPROFILE%\.vscode\extensions` |
+| macOS / Linux | `~/.vscode/extensions` |
+
+> **Windows tip:** press `Win+R`, paste `%USERPROFILE%\.vscode\extensions` and press Enter to open the folder.
+
+The result should look like this:
+
+```
+.vscode/extensions/
+└── alexukk.vscode-psdc-0.1.0/
+    ├── package.json
+    ├── language-configuration.json
+    └── syntaxes/
+        └── pseudocode.tmLanguage.json
 ```
 
-### Option 3: Run without installing (for development)
+### 3. Restart VS Code
 
-```bash
-git clone https://github.com/Alexukk/PseudoCodeLinter.git
-code --extensionDevelopmentPath="/full/path/to/PseudoCodeLinter"
-```
+Close **all** VS Code windows and open it again. Create or open any file with the `.psdc` extension and highlighting turns on automatically. The language indicator in the bottom right corner should say **Pseudocode**.
 
-A new VS Code window opens with the extension loaded straight from the folder. After editing the grammar, press `Ctrl+R` in that window to reload it.
+### Updating
+
+Delete the old `alexukk.vscode-psdc-*` folder from the extensions directory, copy the new version in the same way, and restart VS Code.
 
 ### Uninstall
 
-Open the **Extensions** view, find **Pseudocode (.psdc)**, and click **Uninstall**. Or run:
+Close VS Code, delete the `alexukk.vscode-psdc-0.1.0` folder from the extensions directory, and start VS Code again.
+
+### Try it without installing
+
+If you only want to test it or work on the grammar, run VS Code with the extension loaded directly from the folder:
 
 ```bash
-code --uninstall-extension alexukk.vscode-psdc
+code --extensionDevelopmentPath="/full/path/to/PseudoCodeLinter"
 ```
+
+A new VS Code window opens with the extension active. After editing the grammar, press `Ctrl+R` in that window to reload it.
 
 ## Troubleshooting
 
 | Problem | What to do |
 |---|---|
-| Nothing is highlighted | Check that the file ends with `.psdc`. Look at the language indicator in the bottom right corner of VS Code; it should say **Pseudocode**. If not, click it and choose it manually. |
+| Nothing is highlighted | Check that the file ends with `.psdc`. Click the language indicator in the bottom right corner of VS Code and choose **Pseudocode** manually. Make sure `package.json` sits directly inside `alexukk.vscode-psdc-0.1.0`, not in a nested folder. |
+| The extension doesn't show up after copying | Close **every** VS Code window (check the system tray too) and start it again. |
 | Colors look wrong or some words stay white | Highlight colors come from your color theme. Put the cursor on a word and run **Developer: Inspect Editor Tokens and Scopes** to see which scope it got. Some themes simply don't color certain scopes. |
-| Old behavior after an update | Uninstall the previous version, then restart VS Code and install the new one. |
+| Old behavior after an update | Make sure only one `alexukk.vscode-psdc-*` folder exists in the extensions directory. |
 
 ## Roadmap
 
 - [ ] Snippets for common blocks (`if`, `for`, `while`, `function`)
 - [ ] A forgiving linter: unmatched blocks (`if` without `end if`), unclosed brackets, and other gentle warnings
 - [ ] More comment styles and keyword sets
-- [ ] Marketplace release
 
 Ideas and bug reports are welcome. Open an [issue](https://github.com/Alexukk/PseudoCodeLinter/issues) with a small `.psdc` example that doesn't look right.
 
@@ -117,7 +130,3 @@ Ideas and bug reports are welcome. Open an [issue](https://github.com/Alexukk/Ps
 2. Edit `syntaxes/pseudocode.tmLanguage.json` (highlighting rules) or `language-configuration.json` (brackets, comments, indentation).
 3. Test with `code --extensionDevelopmentPath=...` as shown above.
 4. Open a pull request with a short description and an example of the code your change affects.
-
-## License
-
-[MIT](LICENSE)
