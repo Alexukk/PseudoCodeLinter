@@ -130,3 +130,7 @@ Ideas and bug reports are welcome. Open an [issue](https://github.com/Alexukk/Ps
 2. Edit `syntaxes/pseudocode.tmLanguage.json` (highlighting rules) or `language-configuration.json` (brackets, comments, indentation).
 3. Test with `code --extensionDevelopmentPath=...` as shown above.
 4. Open a pull request with a short description and an example of the code your change affects.
+
+## License
+
+[MIT](LICENSE)
